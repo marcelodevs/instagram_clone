@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  /* outline: none; */
+  text-decoration: none;
+}
+
+.container-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 25%;
+  padding: 10px;
+}
+
+.logo {
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input {
+  width: 75%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background: #eeeeee;
+  outline: dodgerblue;
+}
+
+form hr {
+  width: 75%;
+  border: 1px solid rgb(49, 49, 49);
+}
+
+form a {
+  color: blue;
+}
+
+.btn-sub {
+  width: 75%;
+  padding: 10px;
+  cursor: pointer;
+  background: rgb(30, 144, 255);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: all .6s ease-in-out;
+}
+
+.btn-sub:hover {
+  background: rgb(50, 144, 255);
+}
+
+form p {
+  width: 75%;
+  font-size: 11px;
+  text-align: center;
+}
+
+
+strong {
+  cursor: pointer;
+}
+
+.container-secondary {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 25%;
+  padding: 10px;
+}
+
+.container-secondary p {
+  width: 75%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.container-secondary p a {
+  color: dodgerblue;
+}

@@ -147,19 +147,19 @@ class UserClass
 
 
     $conn = $this->conn->get_connection();
-    $id  = mysqli_real_escape_string($conn, $data['id']);
-    $nome  = mysqli_real_escape_string($conn, $data['name']);
-    $email = mysqli_real_escape_string($conn, $data['email']);
-    $senha = mysqli_real_escape_string($conn, $data['senha']);
-    $categoria = mysqli_real_escape_string($conn, $data['categoria']);
-    $contato  = mysqli_real_escape_string($conn, $data['contato']);
+    $name  = mysqli_real_escape_string($conn, $data['name']);
+    $bio = mysqli_real_escape_string($conn, $data['bio']);
+    $img = mysqli_real_escape_string($conn, $data['image']);
 
     $query = mysqli_query(
       $conn,
-      "UPDATE users SET nome = '$nome', email = '$email', senha = '$senha', info_contato = '$contato', categoria = '$categoria' WHERE id = $id"
+      "UPDATE users SET bio = '$bio', profile_photo_url = '$img' WHERE username = '$name'"
     );
+
+    var_dump($query);
+
     if ($query) {
-      $response = "Usuário atualizdo";
+      header("Location: ../../assets/pages/edit-profile.php?name=" . $name);
     } else {
       $response = "Erro ao tentar atualizar o usuário";
     }

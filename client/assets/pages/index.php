@@ -28,7 +28,7 @@ $all_users = $obj_user->list_users();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" href="../img/VsNE-OHk_8a.png">
-  <title>Intagram</title>
+  <title><?php echo $user['full_name']?> (@<?php echo $user['username']?>)</title>
 </head>
 
 <body>
@@ -51,7 +51,7 @@ $all_users = $obj_user->list_users();
         <img src="../img/add.png" alt="add" class="icon">
         <img src="../img/explore.png" alt="explorar" class="icon">
         <img src="../img/curtir.png" alt="curtir" class="icon">
-        <img src="../img/foto-perfil.png" alt="perfil" class="icon foto-perfil">
+        <img src="data:image/*;base64,<?php echo $user['profile_photo_url']?>" alt="perfil" class="icon foto-perfil">
       </div>
     </div>
   </nav>
@@ -62,7 +62,7 @@ $all_users = $obj_user->list_users();
         <div class="storys-destaques">
           <div class="item-destaque">
             <div class="miniatura-perfil">
-              <img src="../img/foto-perfil.png" alt="">
+              <img src="data:image/*;base64,<?php echo $user['profile_photo_url']?>" alt="">
             </div>
             <p class="user-name"><?php echo $user['username']?></p>
           </div>
@@ -104,13 +104,13 @@ $all_users = $obj_user->list_users();
       <div class="coluna-direita">
         <div class="corpo-do-perfil">
           <div class="miniatura-perfil">
-            <img src="../img/foto-perfil.png" alt="">
+            <img src="data:image/*;base64,<?php echo $user['profile_photo_url']?>" alt="">
           </div>
           <div>
             <p class="nome-do-usario"><?php echo $user['full_name']?></p>
             <p class="sub-text"><?php echo $user['username']?></p>
           </div>
-          <button class="mudar-btn">Editar</button>
+          <button class="mudar-btn" onclick="window.location.href = './edit-profile.php?name=<?php echo $user['username']?>'">Editar</button>
         </div>
         <p class="sugestoes-texto">Sugestões para você <span>Ver Tudo</span></p>
         <br>

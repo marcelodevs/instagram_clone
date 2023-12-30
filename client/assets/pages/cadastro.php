@@ -2,8 +2,6 @@
 
 namespace Controller;
 
-session_start();
-
 require '../../../server/model/ConnectionDB.php';
 require '../../../server/model/UserModel.php';
 
@@ -13,8 +11,8 @@ $obj_user = new UserClass;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  var_dump(gettype($_POST));
-  var_dump($_POST);
+  // var_dump(gettype($_POST));
+  // var_dump($_POST);
 
   $data = [
     'email' => $_POST["email"],
@@ -27,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($obj_user->register($data)) {
     if ($login = $obj_user->loginUser($data)) {
-      $_SESSION['login_user'] = $login;
-      echo "<script>alert('Cadastro realizado com sucesso!')</script>";
+      setcookie("login_user", $login['user_id'], time() + (30 * 24 * 60 * 60), "/");
       header("Location: ./index.php");
     } else {
       $error = 'Erro no login, senha ou email inválidos :(';

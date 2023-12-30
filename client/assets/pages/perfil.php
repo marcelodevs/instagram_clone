@@ -2,15 +2,9 @@
 
 namespace Controller;
 
-session_start();
-
 require_once '../../../autoload.php';
 
 use Model\UserClass;
-
-if (isset($_GET['name'])) {
-  $name = $_GET['name'];
-}
 
 $obj_user = new UserClass;
 
@@ -23,27 +17,6 @@ if (isset($_COOKIE['login_user'])) {
 $user = $obj_user->search($id_user);
 $user = $user['data'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $bio = $_POST['bio'];
-  if (!empty($_FILES['img-update']['tmp_name'])) {
-    $caminhoArquivoTemporario = $_FILES['img-update']['tmp_name'];
-    $conteudoArquivo = file_get_contents($caminhoArquivoTemporario);
-    $imagemBase64 = base64_encode($conteudoArquivo);
-  } else {
-    $imagemBase64 = $user['profile_photo_url'];
-  }
-
-  $data = [
-    'name' => $name,
-    'bio' => $bio,
-    'image' => $imagemBase64
-  ];
-
-  // var_dump($data);
-
-  $obj_user->updateUsers($data);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -53,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/cabecalho.css">
-  <link rel="stylesheet" href="../css/edit-profile.css">
-  <link rel="icon" href="../img/VsNE-OHk_8a.png">
-  <title>Editar Perfil</title>
+  <link rel="stylesheet" href="../css/perfil.css">
+  <link rel="shortcut icon" href="../img/VsNE-OHk_8a.png" type="image/x-icon">
+  <title><?php echo $user['full_name'] ?> (@<?php echo $user['username'] ?>)</title>
 </head>
 
 <body>
@@ -69,46 +42,73 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="ms" class="busca-topo" placeholder="Pesquisar...">
       </form>
       <div class="menu-icons">
-        <img src="../img/inicio.PNG" alt="inicio" onclick="window.location.href = 'index.php'" class="icon">
+        <img src="../img/inicio.PNG" alt="inicio" class="icon" onclick="window.location.href = 'index.php'">
         <img src="../img/chat.png" alt="chat" class="icon">
         <img src="../img/add.png" alt="add" class="icon">
         <img src="../img/explore.png" alt="explorar" class="icon">
         <img src="../img/curtir.png" alt="curtir" class="icon">
-        <img src="data:image/*;base64,<?php echo $user['profile_photo_url']; ?>" onclick="window.location.href = './perfil.php?name=<?php echo $user['username'] ?>'" class="icon foto-perfil">
+        <img src="data:image/*;base64,<?php echo $user['profile_photo_url'] ?>" onclick="window.location.href = './perfil.php?name=<?php echo $user['username'] ?>'" alt="perfil" class="icon foto-perfil">
       </div>
     </div>
   </nav>
 
-  <div class="conteudo-principal">
-    <form class="conteudo-geral" action="edit-profile.php?name=<?php echo $name ?>" method="post" enctype="multipart/form-data">
-      <input type="hidden" value=<?php echo $name ?> name="name">
-      <h2>Editar Perfil</h2>
-      <br><br>
-      <div class="informations-perfil">
-        <img src="data:image/*;base64,<?php echo ($user['profile_photo_url']); ?>">
-        <div class="f-column">
-          <p><?php echo $user['username'] ?></p>
-          <p><?php echo $user['full_name'] ?></p>
+  <div class="infor-user">
+    <div class="left">
+      <img src="data:image/*;base64,<?php echo $user['profile_photo_url'] ?>" alt="">
+    </div>
+    <div class="right">
+      <div class="row">
+        <span class="name"><?php echo $user['username'] ?></span>
+        <div class="modal" id="modal">
+          <div class="modal-content">
+            <h4>Sobre a sua conta</h4>
+            <hr>
+            <br>
+            <div class="infor-user-win">
+              <img src="data:image/*;base64,<?php echo $user['profile_photo_url'] ?>" alt="">
+              <p><?php echo $user['username'] ?></p>
+            </div>
+            <br>
+            <div class="data_entrada">
+              <img src="../img/calendario.png" alt="">
+              <div class="column">
+                <p>Data de entrada</p>
+                <p>
+                  <?php echo $user['data_entrada'] ?>
+                </p>
+              </div>
+            </div>
+            <br>
+            <p class="fechar-btn">Fechar</p>
+          </div>
         </div>
-        <input type="hidden" class="img-up" name="img-update" accept="image/png, image/jpg, image/jpeg">
-        <button class="altera-foto">Alterar Foto</button>
+        <button onclick="window.location.href = './edit-profile.php?name=<?php echo $user['username'] ?>'">
+          <strong>Editar Perfil</strong>
+        </button>
+        <svg aria-label="Opções" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+          <title>Opções</title>
+          <circle cx="12" cy="12" fill="none" r="8.635" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+          <path d="M14.232 3.656a1.269 1.269 0 0 1-.796-.66L12.93 2h-1.86l-.505.996a1.269 1.269 0 0 1-.796.66m-.001 16.688a1.269 1.269 0 0 1 .796.66l.505.996h1.862l.505-.996a1.269 1.269 0 0 1 .796-.66M3.656 9.768a1.269 1.269 0 0 1-.66.796L2 11.07v1.862l.996.505a1.269 1.269 0 0 1 .66.796m16.688-.001a1.269 1.269 0 0 1 .66-.796L22 12.93v-1.86l-.996-.505a1.269 1.269 0 0 1-.66-.796M7.678 4.522a1.269 1.269 0 0 1-1.03.096l-1.06-.348L4.27 5.587l.348 1.062a1.269 1.269 0 0 1-.096 1.03m11.8 11.799a1.269 1.269 0 0 1 1.03-.096l1.06.348 1.318-1.317-.348-1.062a1.269 1.269 0 0 1 .096-1.03m-14.956.001a1.269 1.269 0 0 1 .096 1.03l-.348 1.06 1.317 1.318 1.062-.348a1.269 1.269 0 0 1 1.03.096m11.799-11.8a1.269 1.269 0 0 1-.096-1.03l.348-1.06-1.317-1.318-1.062.348a1.269 1.269 0 0 1-1.03-.096" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
       </div>
-      <br><br>
-      <h3>Bio</h3>
       <br>
-      <div class="bio-perfil">
-        <textarea name="bio" class="bio-text" id="bio-text" maxlength="150"><?php echo $user['bio'] ?></textarea>
-        <span id="char-count"><?php echo strlen($user['bio']); ?></span>/150
+      <div class="row">
+        <strong>18</strong>
+        <span>publicações</span>
+        <strong>275</strong>
+        <span>seguidores</span>
+        <strong>1.303</strong>
+        <span>seguindo</span>
       </div>
-      <br><br>
-      <div class="btn-sub">
-        <button type="submit" id="submitBtn">Enviar</button>
+      <br>
+      <div class="column">
+        <strong><?php echo $user['full_name'] ?></strong>
+        <span><?php echo $user['bio'] ?></span>
       </div>
-    </form>
+    </div>
   </div>
 
-  <script src="../js/edit-profile.js"></script>
-
+  <script src="../js/perfil.js"></script>
 </body>
 
 </html>

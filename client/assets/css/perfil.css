@@ -1,0 +1,116 @@
+.infor-user {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.infor-user img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.infor-user .right .row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.infor-user .right .row svg {
+  cursor: pointer;
+}
+
+.infor-user .right .row span {
+  font-size: 18px;
+}
+
+.infor-user .right .row .name {
+  cursor: pointer;
+}
+
+.infor-user .right .row button {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.infor-user .right .column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content .infor-user-win {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-content .infor-user-win img {
+  width: 70px;
+  height: 70px;
+}
+
+.modal-content .infor-user-win p {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.modal-content .data_entrada {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-content .data_entrada img {
+  width: 20px;
+  height: 20px;
+  border-radius: 0%;
+}
+
+.modal-content .data_entrada .column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 12px;
+}
+
+.modal-content .data_entrada .column p:last-child {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content p:last-child {
+  font-size: 14px;
+  text-align: center;
+}
+
+.fechar-btn {
+  cursor: pointer;
+}

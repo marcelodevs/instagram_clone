@@ -1,13 +1,14 @@
 /* Cores definidas como variáveis */
 :root {
-  --background: #fafafa;
-  --border-bottom: #dfdfdf;
-  --background-menu: #fff;
-  --border-menu: #f7f7f7;
+  --background: #000;
+  --border-bottom: #202020;
+  --background-menu: #000000;
+  --border-menu: #000;
   --text-gray: rgba(1, 1, 1, .5);
-  --placeholder-color: rgb(194, 187, 187);
+  --placeholder-color: rgb(65, 61, 61);
   --yellow: rgb(255, 244, 0);
   --pink: rgb(255, 0, 128);
+  --text-light: white;
 }
 
 /* Estilos utilizando as variáveis */
@@ -56,6 +57,7 @@ body {
 .logo-marca {
   height: 100%;
   margin-top: 5px;
+  color: var(--text-light);
 }
 
 .busca-topo {
@@ -86,6 +88,7 @@ body {
   cursor: pointer;
   margin: 0 10px;
   display: inline-block;
+  color: var(--text-light);
 }
 
 .foto-perfil {

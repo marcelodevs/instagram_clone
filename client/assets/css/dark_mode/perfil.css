@@ -1,11 +1,12 @@
 :root {
-  --background-overlay: rgba(0, 0, 0, 0.5);
+  --bg-dark: #000;
+  --bg-rgba: rgb(62, 62, 62);
   --border-gold: rgb(255, 230, 0);
-  --text-light: rgba(0, 0, 0, 0.5);
+  --text-light: white;
 }
 
-body.action-clickk {
-  background-color: var(--background-overlay);
+body {
+  background-color: var(--bg-dark);
 }
 
 .infor-user {
@@ -33,6 +34,7 @@ body.action-clickk {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  color: var(--text-light);
 }
 
 .infor-user .right .row-options {
@@ -41,15 +43,21 @@ body.action-clickk {
   gap: 20px;
 }
 
+.infor-user .right .row-options button {
+  color: #000;
+}
+
 .infor-user .right .row svg {
   cursor: pointer;
 }
 
 .infor-user .right .row span {
+  color: var(--text-light);
   font-size: 18px;
 }
 
 .infor-user .right .row .name {
+  color: var(--text-light);
   cursor: pointer;
 }
 
@@ -64,6 +72,7 @@ body.action-clickk {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: var(--text-light);
 }
 
 .modal {
@@ -78,7 +87,7 @@ body.action-clickk {
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--bg-rgba);
   padding: 20px;
   border-radius: 5px;
 }

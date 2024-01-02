@@ -1,0 +1,199 @@
+/* Cores definidas como variáveis */
+:root {
+  --background: #fff;
+  --border-bottom: #dfdfdf;
+  --text-gray: rgba(0, 0, 0, 0.5);
+  --hover-bg-color: rgba(0, 0, 0, 0.1);
+  --input-border: #eeeeee;
+  --modal-background: rgba(0, 0, 0, 0.5);
+  --modal-content-bg: #fff;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --submit-btn-bg: rgb(30, 144, 255);
+  --submit-btn-hover-bg: rgb(50, 144, 255);
+  --link-color: blue;
+}
+
+/* Estilos utilizando as variáveis */
+.main-chat {
+  height: 100vh;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.chats-users {
+  background-color: var(--background);
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+}
+
+.chats-users .row .name-user,
+.chats-users .row .msg-name {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.chats-users .row .name-user {
+  font-size: 20px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.corpo-do-perfil .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border-radius: 10px;
+  transition: all .6s ease-in-out;
+}
+
+.corpo-do-perfil .row:hover {
+  background-color: var(--hover-bg-color);
+  cursor: pointer;
+}
+
+.corpo-do-perfil .miniatura-perfil {
+  flex: 0 0 auto;
+  padding: 2px;
+  background: none;
+  width: 70px;
+  height: 70px;
+}
+
+.corpo-do-perfil .miniatura-perfil img {
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.corpo-do-perfil .info-usuario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.corpo-do-perfil .nome-do-usuario {
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+}
+
+.corpo-do-perfil .sub-text {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.messages {
+  background-color: #eee;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: -50px;
+}
+
+.messages img {
+  border-radius: 50%;
+  border: 2px solid black;
+  padding: 20px;
+}
+
+.messages span {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.messages p {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-background);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--modal-content-bg);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.fechar-btn {
+  cursor: pointer;
+  margin-top: 10px;
+  position: absolute;
+  top: 31%;
+  left: 56%;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input {
+  width: 75%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background: var(--input-border);
+  outline: dodgerblue;
+}
+
+form hr {
+  width: 75%;
+  border: 1px solid rgb(49, 49, 49);
+}
+
+form a {
+  color: var(--link-color);
+}
+
+.btn-sub {
+  width: 75%;
+  padding: 10px;
+  cursor: pointer;
+  background: var(--submit-btn-bg);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: all .6s ease-in-out;
+}
+
+.btn-sub:hover {
+  background: var(--submit-btn-hover-bg);
+}
+
+form p {
+  width: 75%;
+  font-size: 11px;
+  text-align: center;
+}
+
+strong {
+  cursor: pointer;
+}

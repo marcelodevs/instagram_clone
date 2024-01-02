@@ -1,0 +1,105 @@
+/* Definição de variáveis para cores e espaçamentos */
+:root {
+  --bg-rgba: rgba(62, 62, 62);
+  --background-color: black;
+  --border-color: black;
+  --text-color: rgba(255, 255, 255, .5);
+  --button-bg-color: rgb(0, 162, 255);
+  --button-text-color: white;
+  --border-radius: 20px;
+  --padding-value: 20px;
+  --input-border: 1px solid white;
+}
+
+/* Estilos utilizando variáveis */
+.conteudo-principal {
+  width: 100%;
+  padding: var(--padding-value) 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.conteudo-geral {
+  width: 70%;
+  max-width: 1000px;
+}
+
+.informations-perfil {
+  background: var(--bg-rgba);
+  width: 70%;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  padding: var(--padding-value);
+}
+
+.informations-perfil img {
+  margin-right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.informations-perfil .f-column {
+  flex-direction: column;
+}
+
+.informations-perfil .f-column p {
+  margin: 0;
+}
+
+.informations-perfil .f-column p:first-child {
+  color: var(--button-text-color);
+  font-weight: bold;
+}
+
+.informations-perfil .f-column p:last-child {
+  color: var(--text-color);
+}
+
+.informations-perfil .altera-foto {
+  margin-left: auto;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.bio-perfil {
+  color: var(--button-text-color);
+}
+
+.bio-text {
+  width: 70%;
+  outline: none;
+  border: var(--input-border);
+  border-radius: var(--border-radius);
+  background: var(--background-color);
+  resize: none;
+  padding: 7px;
+  font-size: 16px;
+  color: var(--button-text-color);
+}
+
+.btn-sub {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#submitBtn {
+  margin-left: auto;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+}

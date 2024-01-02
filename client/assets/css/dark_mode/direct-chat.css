@@ -1,0 +1,279 @@
+/* Cores definidas como variáveis */
+:root {
+  --background: #000;
+  --background-rgba: rgba(0, 0, 0, .5);
+  --border-bottom: #000;
+  --hover-bg-color: rgba(255, 255, 255, .1);
+  --input-border: #000;
+  --modal-background: rgba(0, 0, 0, 0.5);
+  --bg-model: rgb(62, 62, 62);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --submit-btn-bg: rgb(30, 144, 255);
+  --submit-btn-hover-bg: rgb(50, 144, 255);
+  --link-color: dodgerblue;
+  --white-color: #fff;
+  --white-color-rgba: rgba(255, 255, 255, 0.5);
+}
+
+p {
+  color: var(--white-color);
+}
+
+/* Estilos utilizando as variáveis */
+.main-chat {
+  height: calc(100vh - 50px);
+  overflow: hidden;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.chats-users {
+  background-color: var(--background);
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+  border-right: 1px solid var(--bg-model);
+}
+
+.chats-users .row .name-user,
+.chats-users .row .msg-name {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.chats-users .row .name-user {
+  font-size: 20px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.corpo-do-perfil .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border-radius: 10px;
+  transition: all .6s ease-in-out;
+}
+
+.corpo-do-perfil .row:hover {
+  background-color: var(--hover-bg-color);
+  cursor: pointer;
+}
+
+.corpo-do-perfil .miniatura-perfil {
+  flex: 0 0 auto;
+  padding: 2px;
+  background: none;
+  width: 70px;
+  height: 70px;
+}
+
+.corpo-do-perfil .miniatura-perfil img {
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.corpo-do-perfil .info-usuario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.corpo-do-perfil .nome-do-usuario {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.corpo-do-perfil .sub-text {
+  color: var(--white-color-rgba);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.messages {
+  position: relative;
+  background-color: var(--background-rgba);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.messages .information-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.messages .information-user .user-chat-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.messages .information-user span {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.messages .information-user .fullname {
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.messages .information-user .user-name {
+  color: var(--white-color-rgba);
+  font-size: 14px;
+}
+
+.messages .information-user button {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: rgb(51, 51, 51);
+  color: var(--white-color);
+  font-weight: 500;
+}
+
+.msg-container .send-message {
+  width: 90%;
+  height: 50px;
+  border: 1px solid var(--white-color-rgba);
+  border-radius: 19px;
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  top: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.send-message .icon {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.send-message .comentario-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.send-message .comentario-msg {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: transparent;
+  color: var(--white-color);
+}
+
+.send-message .comentario-btn {
+  width: 70px;
+  background: none;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  font-size: 16px;
+  color: rgb(0, 162, 255);
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.fechar-btn {
+  cursor: pointer;
+  margin-top: 10px;
+  position: absolute;
+  top: 31%;
+  left: 56%;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input {
+  width: 75%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background: #eeeeee;
+  outline: dodgerblue;
+}
+
+form hr {
+  width: 75%;
+  border: 1px solid rgb(49, 49, 49);
+}
+
+form a {
+  color: blue;
+}
+
+.btn-sub {
+  width: 75%;
+  padding: 10px;
+  cursor: pointer;
+  background: rgb(30, 144, 255);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: all .6s ease-in-out;
+}
+
+.btn-sub:hover {
+  background: rgb(50, 144, 255);
+}
+
+form p {
+  width: 75%;
+  font-size: 11px;
+  text-align: center;
+}
+
+
+strong {
+  cursor: pointer;
+}

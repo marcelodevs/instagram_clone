@@ -1,15 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const mudarBtn = document.querySelector(".name");
+  const mudarBtnAccounts = document.querySelector(".name");
 
-  const modal = document.getElementById("modal");
+  const modalAccounts = document.querySelector(".modal-accounts");
 
-  const fecharBtn = document.querySelector(".fechar-btn");
+  const fecharBtnAccounts = document.querySelector(".fechar-btn");
 
-  mudarBtn.addEventListener("click", function () {
-    modal.style.display = "flex";
+  mudarBtnAccounts.addEventListener("click", function () {
+    modalAccounts.style.display = "flex";
+    document.body.classList.add('action-clickk');
   });
 
-  fecharBtn.addEventListener("click", function () {
-    modal.style.display = "none";
+  fecharBtnAccounts.addEventListener("click", function () {
+    modalAccounts.style.display = "none";
+    document.body.classList.remove('action-clickk');
+  });
+
+  const mudarBtnSettings = document.querySelector(".click");
+
+  const modalSettings = document.querySelector(".modal-settings");
+
+  const fecharBtnSettings = document.querySelectorAll(".fechar-btn")[1];
+
+  mudarBtnSettings.addEventListener("click", function () {
+    modalSettings.style.display = "flex";
+    document.body.classList.add('action-clickk');
+  });
+
+  fecharBtnSettings.addEventListener("click", function () {
+    modalSettings.style.display = "none";
+    document.body.classList.remove('action-clickk');
   });
 });

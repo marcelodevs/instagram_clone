@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
 :root {
-  --bg-body: #fafafa;
-  --bg-eee: #eee;
-  --bg-fff: #fff;
+  --bg-body: #000;
+  --bg-eee: #000;
+  --bg-fff: #000;
+  --bg-model: rgb(62, 62, 62);
   --bd-bottom: #dfdfdf;
   --bd-f7: #f7f7f7;
   --color-place: rgb(194, 187, 187);
@@ -11,6 +12,8 @@
   --bd-top: #000;
   --color-dodger: rgb(0, 162, 255);
   --color-blue: blue;
+  --color-white: #fff;
+  --color-white-rgba: rgba(255, 255, 255, .4);
 }
 
 * {
@@ -28,50 +31,6 @@ body {
   background: var(--bg-body);
   position: relative;
   font-family: 'Roboto', sans-serif;
-}
-
-.menu-principal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background: var(--bg-fff);
-  border-bottom: 1px solid var(--bf-df);
-  display: flex;
-  justify-content: center;
-  padding: 5px 0px;
-}
-
-.menu-links {
-  width: 70%;
-  max-width: 1000px;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-marca {
-  height: 100%;
-  margin-top: 5px;
-}
-
-.busca-topo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 35px;
-  background: var(--bg-eee);
-  border: 1px solid #f7f7f7;
-  border-radius: 5px;
-  color: var(--color-rgba-05);
-  text-align: center;
-}
-
-.busca-topo::placeholder {
-  color: var(--color-place);
 }
 
 #searchResults {
@@ -105,6 +64,7 @@ body {
   cursor: pointer;
   margin: 0 10px;
   display: inline-block;
+  color: var(--color-white);
 }
 
 .foto-perfil {
@@ -183,7 +143,11 @@ body {
   text-align: center;
   font-size: 12px;
   margin-top: 5px;
-  color: var(--color-rgba-05);
+  color: var(--color-white);
+}
+
+p {
+  color: var(--color-white);
 }
 
 .postagens {
@@ -206,7 +170,7 @@ body {
 .informacoes .user-name {
   width: auto;
   font-weight: bold;
-  color: var(--bd-top);
+  color: var(--color-white);
   font-style: 14px;
   margin-left: 10px;
 }
@@ -259,7 +223,7 @@ body {
 }
 
 .tempo-post {
-  color: var(--color-rgba-05);
+  color: var(--color-white-rgba);
   font-size: 12px;
 }
 
@@ -346,15 +310,16 @@ body {
   border: none;
 }
 
-.corpo-do-perfil .nome-do-usuario {
+.corpo-do-perfil .nome-do-usario {
   font-weight: 500;
   font-size: 14px;
-  color: var(--bd-top);
+  color: var(--color-white);
   text-align: left;
+  cursor: pointer;
 }
 
 .sub-text {
-  color: var(--color-rgba-05);
+  color: var(--color-white-rgba);
   font-size: 12px;
   font-weight: 500;
   margin-top: 5px;
@@ -369,7 +334,7 @@ body {
 
 .sugestoes-texto {
   font-size: 14px;
-  color: var(--color-rgba-05);
+  color: var(--color-white);
   font-weight: 700;
   margin: 20px 0;
 }
@@ -377,7 +342,7 @@ body {
 .sugestoes-texto span {
   float: right;
   font-size: 13px;
-  color: var(--color-rgba-05);
+  color: var(--color-white);
   font-weight: 700;
   margin-right: 75px;
   cursor: pointer;
@@ -398,7 +363,7 @@ body {
 }
 
 .modal-content {
-  background-color: var(--bg-fff);
+  background-color: var(--bg-model);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -427,8 +392,12 @@ form {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid gray;
-  background: var(--bg-eee);
+  background: var(--bg-model);
   outline: var(--color-dodger);
+}
+
+.input::placeholder {
+  color: var(--color-white);
 }
 
 form hr {
@@ -437,7 +406,7 @@ form hr {
 }
 
 form a {
-  color: var(--color-blue);
+  color: var(--color-dodger);
 }
 
 .btn-sub {
@@ -447,7 +416,7 @@ form a {
   background: rgb(30, 144, 255);
   border: none;
   border-radius: 5px;
-  color: var(--bg-fff);
+  color: var(--color-white);
   transition: all .6s ease-in-out;
 }
 
@@ -460,7 +429,6 @@ form p {
   font-size: 11px;
   text-align: center;
 }
-
 
 strong {
   cursor: pointer;

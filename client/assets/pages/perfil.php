@@ -2,14 +2,20 @@
 
 namespace Controller;
 
+session_start();
+
 require_once '../../../autoload.php';
 
 use Model\UserClass;
+use Model\FollowClass;
 
 $obj_user = new UserClass;
+$obj_follow = new FollowClass;
 
 if (isset($_COOKIE['login_user'])) {
   $id_user = $_COOKIE['login_user'];
+} else if (isset($_SESSION['login_user'])) {
+  $id_user = $_SESSION['login_user'];
 } else {
   header("Location: ../../../index.php");
 }
@@ -18,6 +24,9 @@ $user = $obj_user->search($id_user);
 $user = $user['data'];
 
 $preferences_dark_mode = $obj_user->get_preferences_dark_mode($id_user);
+
+$following = $obj_follow->get_following($user['username']);
+$followers = $obj_follow->get_followers($user['username']);
 
 ?>
 
@@ -139,9 +148,9 @@ $preferences_dark_mode = $obj_user->get_preferences_dark_mode($id_user);
       <div class="row">
         <strong>18</strong>
         <span>publicações</span>
-        <strong>275</strong>
+        <strong><?php echo $followers ?></strong>
         <span>seguidores</span>
-        <strong>1.303</strong>
+        <strong><?php echo $following ?></strong>
         <span>seguindo</span>
       </div>
       <br>

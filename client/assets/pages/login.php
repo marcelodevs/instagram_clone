@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+session_start();
+
 require '../../../server/model/ConnectionDB.php';
 require '../../../server/model/UserModel.php';
 
@@ -18,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $useCookie = $obj_user->getUseCookie($data);
 
+  var_dump($useCookie);
+
   if ($useCookie) {
     $login = $obj_user->loginUser($data);
     if ($login) {
@@ -28,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       header("Location: ../php/404.php?error=" . urlencode($error));
     }
   } else {
-    session_start();
+    setcookie("login_user", "", time() - 3600, "/");
     $login = $obj_user->loginUser($data);
     if ($login) {
       $_SESSION['login_user'] = $login['user_id'];

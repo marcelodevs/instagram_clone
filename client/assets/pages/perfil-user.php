@@ -2,16 +2,19 @@
 
 namespace Controller;
 
+session_start();
+
 require_once '../../../autoload.php';
 
 use Model\UserClass;
+use Model\FollowClass;
 
 $obj_user = new UserClass;
+$obj_follow = new FollowClass;
 
 if (isset($_COOKIE['login_user'])) {
   $id_user = $_COOKIE['login_user'];
 } else if (isset($_SESSION['login_user'])) {
-  session_start();
 
   $id_user = $_SESSION['login_user'];
 } else {
@@ -29,6 +32,9 @@ $user = $obj_user->search($name_user);
 $user = $user['data'];
 
 $preferences_dark_mode = $obj_user->get_preferences_dark_mode($id_user);
+
+$following = $obj_follow->get_following($user['username']);
+$followers = $obj_follow->get_followers($user['username']);
 
 ?>
 
@@ -126,8 +132,9 @@ $preferences_dark_mode = $obj_user->get_preferences_dark_mode($id_user);
           </div>
         </div>
         <div class="row-options">
-          <button style="background-color: dodgerblue;">
-            <strong>Seguir</strong>
+          <?php $is_following = $obj_follow->get_verification_follow($user_local['username'], $user['username']); ?>
+          <button style="background-color: <?php echo $is_following ? '' : 'dodgerblue' ?>;" id="btn_<?php echo $user['username'] ?>" onclick="seguir('<?php echo $user['username'] ?>', '<?php echo $user_local['username'] ?>')">
+            <?php echo $is_following ? "<strong>Seguindo</strong>" : "<strong>Seguir</strong>"; ?>
           </button>
           <button onclick="window.location.href = './chat/direct-user.php?name=<?php echo $user['username'] ?>'">
             <strong>Conversar</strong>
@@ -153,9 +160,9 @@ $preferences_dark_mode = $obj_user->get_preferences_dark_mode($id_user);
       <div class="row">
         <strong>18</strong>
         <span>publicações</span>
-        <strong>275</strong>
+        <strong><?php echo $followers ?></strong>
         <span>seguidores</span>
-        <strong>1.303</strong>
+        <strong><?php echo $following ?></strong>
         <span>seguindo</span>
       </div>
       <br>
@@ -166,8 +173,8 @@ $preferences_dark_mode = $obj_user->get_preferences_dark_mode($id_user);
     </div>
   </div>
 
+  <script src="../../../server/js/jquery.js"></script>
   <script src="../js/perfil.js"></script>
-  <script src="../js/progress-bar.js"></script>
 </body>
 
 </html>

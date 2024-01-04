@@ -2,16 +2,19 @@
 
 namespace Controller;
 
+session_start();
+
 require_once '../../../autoload.php';
 
 use Model\UserClass;
+use Model\FollowClass;
 
 $obj_user = new UserClass;
+$obj_follow = new FollowClass;
 
 if (isset($_COOKIE['login_user'])) {
   $id_user = $_COOKIE['login_user'];
 } else if (isset($_SESSION['login_user'])) {
-  session_start();
 
   $id_user = $_SESSION['login_user'];
 } else {
@@ -24,6 +27,9 @@ $user = $user['data'];
 $preferences_dark_mode = $obj_user->get_preferences_dark_mode($id_user);
 
 $all_users = $obj_user->list_users();
+
+$following = $obj_follow->get_following($user['username']);
+$followers = $obj_follow->get_followers($user['username']);
 
 ?>
 
@@ -165,7 +171,8 @@ $all_users = $obj_user->list_users();
         <p class="sugestoes-texto">Sugestões para você <span>Ver Tudo</span></p>
         <br>
         <?php for ($i = 0; $i < count($all_users); $i++) : ?>
-          <?php if ($all_users[$i]['username'] <> $user['username']) : ?>
+          <?php $is_following = $obj_follow->get_verification_follow($user['username'], $all_users[$i]['username']); ?>
+          <?php if ($all_users[$i]['username'] <> $user['username'] && !$is_following) : ?>
             <div class="corpo-do-perfil">
               <div class="miniatura-perfil">
                 <img src="data:image/*;base64,<?php echo $all_users[$i]['profile_photo_url'] ?>" alt="foto">
@@ -174,19 +181,30 @@ $all_users = $obj_user->list_users();
                 <p class="nome-do-usario" onclick="window.location.href = './perfil-user.php?name=<?php echo $all_users[$i]['username'] ?>'">
                   <?php echo $all_users[$i]['username'] ?>
                 </p>
-                <p class="sub-text">Seguido(a) por </p>
+                <p class="sub-text">
+                  <?php
+                  if ($is_following) {
+                    echo "Seguido por você";
+                  } else {
+                    echo "Não seguido por você";
+                  }
+                  ?>
+                </p>
               </div>
-              <button class="mudar-btn">Seguir</button>
+              <button id="btn_<?php echo $all_users[$i]['username'] ?>" class="mudar-btn" onclick="seguir('<?php echo $all_users[$i]['username'] ?>', '<?php echo $user['username'] ?>')">
+                <?php echo $is_following ? "Seguindo" : "Seguir"; ?>
+              </button>
             </div>
           <?php endif; ?>
         <?php endfor; ?>
+
       </div>
     </div>
   </section>
 
+  <script src="../../../server/js/jquery.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/progress-bar.js"></script>
-  <script src="../../../server/js/jquery.js"></script>
   <script src="../../../server/js/search-user.js"></script>
 
 </body>

@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+session_start();
+
 require_once '../../../../autoload.php';
 
 use Model\UserClass;
@@ -11,8 +13,6 @@ $obj_user = new UserClass;
 if (isset($_COOKIE['login_user'])) {
   $id_user = $_COOKIE['login_user'];
 } else if (isset($_SESSION['login_user'])) {
-  session_start();
-
   $id_user = $_SESSION['login_user'];
 } else {
   header("Location: ../../../index.php");

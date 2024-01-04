@@ -359,6 +359,7 @@ body {
   font-weight: 500;
   margin-top: 5px;
   text-align: left;
+  cursor: pointer;
 }
 
 .mudar-btn {

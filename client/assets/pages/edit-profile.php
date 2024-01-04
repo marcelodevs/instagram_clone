@@ -16,6 +16,8 @@ $obj_user = new UserClass;
 
 if (isset($_COOKIE['login_user'])) {
   $id_user = $_COOKIE['login_user'];
+} else if (isset($_SESSION['login_user'])) {
+  $id_user = $_SESSION['login_user'];
 } else {
   header("Location: ../../../index.php");
 }

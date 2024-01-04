@@ -2,16 +2,19 @@
 
 namespace Controller;
 
+session_start();
+
 require_once '../../../autoload.php';
 
 use Model\UserClass;
+use Model\FollowClass;
 
 $obj_user = new UserClass;
+$obj_follow = new FollowClass;
 
 if (isset($_COOKIE['login_user'])) {
   $id_user = $_COOKIE['login_user'];
 } else if (isset($_SESSION['login_user'])) {
-  session_start();
 
   $id_user = $_SESSION['login_user'];
 } else {
@@ -23,7 +26,7 @@ $user = $user['data'];
 
 $preferences_dark_mode = $obj_user->get_preferences_dark_mode($id_user);
 
-$all_users = $obj_user->list_users();
+$all_users = $obj_follow->list_following($user['username']);
 
 ?>
 
@@ -45,9 +48,6 @@ $all_users = $obj_user->list_users();
 </head>
 
 <body>
-  <div class="progress-container">
-    <div class="progress-bar" id="myBar"></div>
-  </div>
 
   <nav class="menu-principal">
     <div class="menu-links">
